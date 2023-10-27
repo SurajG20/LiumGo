@@ -52,7 +52,7 @@ app.use('/electric-fleet', ElectricFleetRoutes);
 app.use('/jobs', JobsRoutes);
 app.use('/blogs', BlogsRoutes);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 
 const start = async () => {
   try {
