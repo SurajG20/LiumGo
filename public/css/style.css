@@ -125,6 +125,12 @@
    font-size: xx-large;
  }
 
+@media screen and (max-width: 796px) {
+  .disclaimer .row .col-sm-12{
+    margin-bottom: 50px;
+    /* Adjust this value as needed */
+  }
+}
 
 
  .small-container {
@@ -574,6 +580,7 @@
    width: 100%;
    background: transparent;
    padding: 0px 100px;
+   /* background-color: red; */
  }
 
  .main-header .outer-container .logo-box {
@@ -1993,13 +2000,7 @@
    }
  }
 
-
-
-
-
-
-
-
+/* Add this CSS code to your stylesheet */
 
 
 
@@ -2060,22 +2061,47 @@
 
  #services .service-block .content {
    background: white;
-   padding: 16px 24px;
+   width: 100%;
+   padding: 10px 24px;
    border-radius: 16px;
    display: flex;
    flex-direction: column;
-   gap: 16px;
+   gap: 0px;
    transform-style: preserve-3d;
    transform: translatez(20px);
+ }
+ #services .service-block .content h3{
+  font-size: large;
+  text-align: center;
+  width: 100%;
+   
+ }
+ #services .service-block .content p{
+   font-size: small;
+   color: #D0D4CA;
+ }
+
+
+ #services #service-icon-image-box{
+    width: 100%;
+    height: 300px;
+ }
+ #services #service-icon-image-box img{
+    width: 100%;
+    height: 100%
  }
 
 
 
+ @media (max-width: 767px) {
+   .service-section #services .service-block{
+     margin-bottom: 100px;
+     height: min-content
+       /* Adjust this value to decrease the vertical gap */
+   }
+ }
 
-
-
-
-
+ 
 
 
  /** testimonial-section **/
@@ -2733,7 +2759,7 @@
 
  .main-footer .footer-top {
    position: relative;
-   padding: 120px 0px 90px 0px;
+   padding: 120px 0px 0px 0px;
    border-bottom: 1px solid #e6eaf1;
  }
 
@@ -2854,7 +2880,7 @@
 
  .main-footer .footer-bottom {
    position: relative;
-   padding: 45px 0px;
+   padding: 0px 0px;
  }
 
  .main-footer .footer-bottom .copyright a {
@@ -2892,6 +2918,23 @@
  }
 
  .main-footer .footer-bottom .footer-nav li a:hover {}
+
+ .main-footer .footer-bottom .footer-enterprise-logo{
+  
+  margin: auto ;
+  width: 150px;
+  height: 150px;
+ }
+ .main-footer .footer-bottom .footer-enterprise-logo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+ }
+
+ .main-footer .footer-bottom .footer-enterprise{
+  text-align: center;
+
+ }
 
 
 
@@ -3095,6 +3138,8 @@
    -webkit-animation: zoom-fade 5s infinite linear;
    animation: zoom-fade 5s infinite linear;
  }
+
+
 
 
  /** service-style-two **/
@@ -5166,6 +5211,7 @@
 
  .contact-section .form-inner #contact-form .form-group input[type='text'],
  .contact-section .form-inner #contact-form .form-group input[type='email'],
+ .contact-section .form-inner #contact-form .form-group input[type='number'],
  .contact-section .form-inner #contact-form .form-group textarea {
    position: relative;
    width: 100%;
@@ -5288,4 +5334,23 @@
 
  .alert-dismissible {
    padding: 10px !important;
+ }
+
+
+ /* home page service  */
+
+ @media (max-width: 767px) {
+   #home-service-block {
+      width: 100% !important;
+     padding: 0px;
+     margin: 50px 0px !important;
+     height: min-content !important;
+   }
+ }
+
+ #home-text{
+  /* color: black; */
+  font-weight: bolder;
+  /* text-shadow: 2px 4px 10px #000000; */
+  
  }
