@@ -125,6 +125,12 @@
    font-size: xx-large;
  }
 
+ @media screen and (max-width: 796px) {
+   .disclaimer .row .col-sm-12 {
+     margin-bottom: 50px;
+     /* Adjust this value as needed */
+   }
+ }
 
 
  .small-container {
@@ -574,6 +580,7 @@
    width: 100%;
    background: transparent;
    padding: 0px 100px;
+   /* background-color: red; */
  }
 
  .main-header .outer-container .logo-box {
@@ -1993,13 +2000,7 @@
    }
  }
 
-
-
-
-
-
-
-
+ /* Add this CSS code to your stylesheet */
 
 
 
@@ -2060,20 +2061,48 @@
 
  #services .service-block .content {
    background: white;
-   padding: 16px 24px;
+   width: 100%;
+   padding: 10px 24px;
    border-radius: 16px;
    display: flex;
    flex-direction: column;
-   gap: 16px;
+   gap: 0px;
    transform-style: preserve-3d;
    transform: translatez(20px);
  }
 
+ #services .service-block .content h3 {
+   font-size: large;
+   text-align: center;
+   width: 100%;
+
+ }
+
+ #services .service-block .content p {
+   font-size: small;
+   color: #D0D4CA;
+ }
+
+
+ #services #service-icon-image-box {
+   width: 100%;
+   height: 300px;
+ }
+
+ #services #service-icon-image-box img {
+   width: 100%;
+   height: 100%
+ }
 
 
 
-
-
+ @media (max-width: 767px) {
+   .service-section #services .service-block {
+     margin-bottom: 100px;
+     height: min-content
+       /* Adjust this value to decrease the vertical gap */
+   }
+ }
 
 
 
@@ -2734,7 +2763,7 @@
 
  .main-footer .footer-top {
    position: relative;
-   padding: 120px 0px 90px 0px;
+   padding: 120px 0px 0px 0px;
    border-bottom: 1px solid #e6eaf1;
  }
 
@@ -2855,7 +2884,7 @@
 
  .main-footer .footer-bottom {
    position: relative;
-   padding: 45px 0px;
+   padding: 0px 0px;
  }
 
  .main-footer .footer-bottom .copyright a {
@@ -2893,6 +2922,24 @@
  }
 
  .main-footer .footer-bottom .footer-nav li a:hover {}
+
+ .main-footer .footer-bottom .footer-enterprise-logo {
+
+   margin: auto;
+   width: 150px;
+   height: 150px;
+ }
+
+ .main-footer .footer-bottom .footer-enterprise-logo img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+ }
+
+ .main-footer .footer-bottom .footer-enterprise {
+   text-align: center;
+
+ }
 
 
 
@@ -3096,6 +3143,8 @@
    -webkit-animation: zoom-fade 5s infinite linear;
    animation: zoom-fade 5s infinite linear;
  }
+
+
 
 
  /** service-style-two **/
@@ -5167,6 +5216,7 @@
 
  .contact-section .form-inner #contact-form .form-group input[type='text'],
  .contact-section .form-inner #contact-form .form-group input[type='email'],
+ .contact-section .form-inner #contact-form .form-group input[type='number'],
  .contact-section .form-inner #contact-form .form-group textarea {
    position: relative;
    width: 100%;
@@ -5198,8 +5248,6 @@
  .map-section {
    margin: 15px 0px;
  }
-
-
 
  /* .skills-required {
    list-style-type: disc !important;
@@ -5289,6 +5337,63 @@
 
  .alert-dismissible {
    padding: 10px !important;
+ }
+
+ .error_body {
+   margin: 0;
+   padding: 0;
+   text-align: center;
+   font-family: sans-serif;
+   background-color: #c5fcfc;
+ }
+
+ .error h1,
+ .error a {
+   margin: 0;
+   padding: 0;
+   text-decoration: none;
+ }
+
+ .error .section {
+   padding: 4rem 2rem;
+ }
+
+ .error .section .number {
+   font-size: 150px;
+   color: #008B62;
+   text-shadow:
+     1px 1px 1px #00593E,
+     2px 2px 1px #00593E,
+     3px 3px 1px #00593E,
+     4px 4px 1px #00593E,
+     5px 5px 1px #00593E,
+     6px 6px 1px #00593E,
+     7px 7px 1px #00593E,
+     8px 8px 1px #00593E,
+     25px 25px 8px rgba(0, 0, 0, 0.2);
+ }
+
+ .error .page {
+   margin: 2rem 0;
+   font-size: 20px;
+   font-weight: 600;
+   color: #444;
+ }
+
+ .error .back-home {
+   display: inline-block;
+   border: 2px solid #222;
+   color: #222;
+   text-transform: uppercase;
+   font-weight: 600;
+   padding: 0.75rem 1rem 0.6rem;
+   transition: all 0.2s linear;
+   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+ }
+
+ .error .back-home:hover {
+   background: #222;
+   color: #ddd;
  }
 
  .error_body {

@@ -110,15 +110,15 @@
             <nav class="main-menu main-menu-homepage navbar-expand-md navbar-light">
               <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                 <ul class="navigation clearfix">
-                  <li class="current dropdown"><a href="/">Home</a></li>
-                  <li class="dropdown"><a href="/about">About</a></li>
-                  <li class="dropdown"><a href="/services">Services</a></li>
+                  <li class="current dropdown"><a href="/" id="home-text">Home</a></li>
+                  <li class="dropdown"><a href="/about" id="home-text">About</a></li>
+                  <li class="dropdown"><a href="/services" id="home-text">Services</a></li>
                   <li class="dropdown">
-                    <a href="/electric-fleet">Electric Fleet</a>
+                    <a href="/electric-fleet" id="home-text">Electric Fleet</a>
                   </li>
-                  <li class="dropdown"><a href="/jobs">Jobs</a></li>
-                  <li class="dropdown"><a href="/blogs">Blog</a></li>
-                  <li><a href="/contact">Contact</a></li>
+                  <li class="dropdown"><a href="/jobs" id="home-text">Jobs</a></li>
+                  <li class="dropdown"><a href="/blogs" id="home-text">Blog</a></li>
+                  <li><a href="/contact" id="home-text">Contact</a></li>
                   <% if(currentUser){ %>
                     <li>
                       <form action="/admin/logout" method="post">
@@ -168,20 +168,28 @@
       <div class="social-links">
         <ul class="clearfix">
           <li>
-            <a href="https://twitter.com/Evolveindia010"><span class="fab fa-twitter"></span></a>
+            <a href="https://twitter.com/Evolveindia010">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x"
+                viewBox="0 0 16 16">
+                <path
+                  d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z" />
+              </svg>
+            </a>
+
+            </a>
           </li>
           <li>
             <a href="https://www.facebook.com/profile.php?id=100092609838823"><span
                 class="fab fa-facebook-square"></span></a>
           </li>
           <li>
-            <a href="/"><span class="fab fa-pinterest-p"></span></a>
+            <a href="https://in.pinterest.com/evolveenterprise01/"><span class="fab fa-pinterest-p"></span></a>
           </li>
           <li>
             <a href="https://instagram.com/lium_go?utm_source=qr"><span class="fab fa-instagram"></span></a>
           </li>
           <li>
-            <a href="/"><span class="fab fa-youtube"></span></a>
+            <a href="https://youtube.com/@LiumGo?si=vNSTPNpZF25JPZdo"><span class="fab fa-youtube"></span></a>
           </li>
         </ul>
       </div>
@@ -315,7 +323,7 @@
         <div class="col-lg-6 col-md-6 col-sm-12 image-column">
           <div id="image_block_01">
             <div class="image-box wow slideInLeft" data-wow-delay="0ms"
-              style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;" data-wow-duration="1500ms">
+              style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" data-wow-duration="1500ms">
               <figure class="image js-tilt">
                 <img src="/images/IElum/same-day-express-deliveries.png" alt="" />
               </figure>
@@ -461,7 +469,7 @@
       </div>
       <div class="row clearfix d-flex align-items-stretch">
         <!-- card 1 -->
-        <div class="col-lg-4 col-md-6 col-sm-12 service-block">
+        <div class="col-lg-4 col-md-6 col-sm-12 service-block" id="home-service-block">
           <div class="wrapper">
             <div class="card" data-tilt>
               <div class="card-image-box">
@@ -475,7 +483,7 @@
         </div>
 
         <!-- card 2 -->
-        <div class="col-lg-4 col-md-6 col-sm-12 service-block">
+        <div class="col-lg-4 col-md-6 col-sm-12 service-block" id="home-service-block">
           <div class="wrapper">
             <div class="card" data-tilt>
               <div class="card-image-box">
@@ -489,7 +497,7 @@
         </div>
 
         <!-- card 3 -->
-        <div class="col-lg-4 col-md-6 col-sm-12 service-block">
+        <div class="col-lg-4 col-md-6 col-sm-12 service-block" id="home-service-block">
           <div class="wrapper">
             <div class="card" data-tilt>
               <div class="card-image-box d-flex justify-content-center align-items-center">
@@ -928,14 +936,14 @@
               <div class="lower-content">
                 <h3>Piaggio</h3>
                 <!--<span>
-                     <p> 0.8 mm G.I. Corrugated welded with Mig welding Hat
-                      sections duly fixed.
-                    </p>
-                    <p>Silicon Sealant for over lapping joints</p>
-                    <p>High Tensile Nuts and Bolts.</p>
-                    <p>Powder-coated Paint</p>
-                    <p>2 doors with Container Locking</p>
-                  </span> -->
+                       <p> 0.8 mm G.I. Corrugated welded with Mig welding Hat
+                        sections duly fixed.
+                      </p>
+                      <p>Silicon Sealant for over lapping joints</p>
+                      <p>High Tensile Nuts and Bolts.</p>
+                      <p>Powder-coated Paint</p>
+                      <p>2 doors with Container Locking</p>
+                    </span> -->
               </div>
             </div>
           </div>
@@ -967,14 +975,14 @@
               <div class="lower-content">
                 <h3>Log 9</h3>
                 <!--<span>
-                     <p> 0.8 mm G.I. Corrugated welded with Mig welding Hat
-                      sections duly fixed.
-                    </p>
-                    <p>Silicon Sealant for over lapping joints</p>
-                    <p>High Tensile Nuts and Bolts.</p>
-                    <p>Powder-coated Paint</p>
-                    <p>2 doors with Container Locking</p>
-                  </span> -->
+                       <p> 0.8 mm G.I. Corrugated welded with Mig welding Hat
+                        sections duly fixed.
+                      </p>
+                      <p>Silicon Sealant for over lapping joints</p>
+                      <p>High Tensile Nuts and Bolts.</p>
+                      <p>Powder-coated Paint</p>
+                      <p>2 doors with Container Locking</p>
+                    </span> -->
               </div>
             </div>
           </div>
@@ -998,11 +1006,11 @@
               <div class="lower-content">
                 <h3>Altigreen</h3>
                 <!-- <span>
-                    Altigreen
-                      With a closed container to keep your loads safe, and 20% more space than competition for
-                      cargo thanks to our class-leading 177 cu ft (5 cu mts) container, High Deck 3-wheeler electric
-                      cargo vehicle is your best choice for all road and weather conditions.
-                  </span> -->
+                      Altigreen
+                        With a closed container to keep your loads safe, and 20% more space than competition for
+                        cargo thanks to our class-leading 177 cu ft (5 cu mts) container, High Deck 3-wheeler electric
+                        cargo vehicle is your best choice for all road and weather conditions.
+                    </span> -->
               </div>
             </div>
           </div>
@@ -1011,7 +1019,6 @@
     </div>
   </section>
   <!-- project-section end -->
-
   <!-- news-section -->
   <section class="news-section" id="blog">
     <div class="pattern-layer wow slideInRight animated" data-wow-delay="500ms" data-wow-duration="1500ms"
@@ -1022,7 +1029,8 @@
         <h2>Stay Updated with <span style="color: #92de90">LIUM GO</span></h2>
       </div>
       <div class="row clearfix">
-        <% for (let blog of blogs) { %>
+        <% const limitedBlogs = blogs.slice(0, 3); 
+     for (let blog of limitedBlogs) { %>
           <div class="col-lg-4 col-md-6 col-sm-12 news-block">
             <div class="news-block-one wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
               <div class="inner-box">
@@ -1051,15 +1059,15 @@
                       <%= blog.title %>
                     </a></h3>
                   <% const words=blog.description.split(' ');
-                     const limitedWords = words.slice(0, 30); // Adjust the number to your preference
-                  %>
-                  <p><%= limitedWords.join(' ') %> <a href="/blog-details/<%= blog._id %>">Read more...</a></p>
-                </div>
+                             const limitedWords = words.slice(0, 30); // Adjust the number to your preference
+                          %>
+                          <p><%= limitedWords.join(' ') %> <a href="/blog-details/<%= blog._id %>">Read more...</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% } %>
               </div>
-            </div>
-          </div>
-        <% } %>
-      </div>
 
     </div>
   </section>
@@ -1176,12 +1184,12 @@
                 <div class="widget-content">
                   <ul>
                     <li>
-                      Leela Tower, Sonagiri Square, Bhopal, Madhya Pradesh -
-                      462022
+                      3/27, Mandawali A2 Saket Block, Street No 3, Delhi
+                      110092.
                     </li>
                     <li>
-                      <a href="tel:+917303690636">+91 7303690636</a> ,
-                      <a href="tel:+917019963774">+91 7019963774</a>
+                      <a href="tel:+9196081 94579">+91 9608194579</a> ,
+                      <a href="tel:+917549244783">+91 7549244783</a>
                     </li>
                     <li>
                       <a href="mailto:sakshi@liumgo.com">sakshi@liumgo.com</a>
@@ -1201,9 +1209,9 @@
                   <li>
                     <a href="https://twitter.com/Evolveindia010">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-twitter" viewBox="0 0 16 16">
+                        class="bi bi-twitter-x" viewBox="0 0 16 16">
                         <path
-                          d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                          d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z" />
                       </svg>
                     </a>
                   </li>
@@ -1232,13 +1240,25 @@
         </div>
       </div>
       <div class="footer-bottom clearfix">
-        <div class="copyright pull-left">
-          <p><a href="/">LIUM GO</a> &copy; 2023 All Right Reserved</p>
+        <div class="copyright d-flex flex-row justify-content-center align-items-center">
+          <div>
+            <!-- logo section -->
+            <div class="footer-enterprise">
+              <div class="footer-enterprise-logo">
+                <img class="m-auto" src="/images/IElum/enterprise-logo.png" alt="Enterprise logo" />
+              </div>
+              <div class="d-flex align-items-end">
+                <span class="mx-1">powered by</span>
+                <span class="mx-1 font-weight-bold">EVOLVE ENTERPRISE INDIA</span>
+              </div>
+            </div>
+            <!-- all right reserved -->
+            <div class="text-center">
+              <a href="/">LIUM GO</a> &copy; 2023 All Right Reserved
+            </div>
+          </div>
         </div>
-        <ul class="footer-nav pull-right">
-          <li><a href="/">Terms of Service</a></li>
-          <li><a href="/">Privacy Policy</a></li>
-        </ul>
+        <!-- enterprise-logo.png -->
       </div>
     </div>
   </footer>
