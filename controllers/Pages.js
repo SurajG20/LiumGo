@@ -41,7 +41,16 @@ module.exports.blog = async (req, res) => {
   if (req.session.AdminUser) {
     var currentUser = req.session.AdminUser;
   }
-  res.render('blog-standard', { currentUser, blogs });
+  const searchQuery = req.query['search-field'];
+
+  if (!searchQuery) {
+    return res.render('blog-standard', { currentUser, blogs });
+  }
+  const filteredBlogs = blogs.filter((blog) =>
+    blog.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  res.render('blog-standard', { currentUser, blogs: filteredBlogs });
 };
 
 module.exports.contact = (req, res) => {
