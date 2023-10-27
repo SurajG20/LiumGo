@@ -53,7 +53,6 @@ module.exports.addNewVehicle = (req, res) => {
 };
 
 module.exports.postNewVehicleForm = async (req, res) => {
-  const { name, description, image } = req.body;
   const vehicle = new Vehicles(req.body);
   vehicle.images = req.files.map((f) => {
     return {
