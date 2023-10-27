@@ -119,6 +119,13 @@
                   <li class="dropdown"><a href="/jobs">Jobs</a></li>
                   <li class="dropdown"><a href="/blogs">Blog</a></li>
                   <li><a href="/contact">Contact</a></li>
+                  <% if(currentUser){ %>
+                    <li>
+                      <form action="/admin/logout" method="post">
+                        <button class="btn btn-danger ">Logout</button>
+                      </form>
+                    </li>
+                    <% } %>
                 </ul>
               </div>
             </nav>
@@ -1015,108 +1022,45 @@
         <h2>Stay Updated with <span style="color: #92de90">LIUM GO</span></h2>
       </div>
       <div class="row clearfix">
-        <div class="col-lg-4 col-md-6 col-sm-12 news-block">
-          <div class="news-block-one wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-            <div class="inner-box">
-              <div class="image-holder">
-                <figure class="image-box">
-                  <img src="/images/news/rankweb.png" alt="rankweb-Image" />
-                </figure>
-                <div class="post-date">
-                  <i class="fas fa-calendar-alt"></i>
-                  <p>Dec 23</p>
+        <% for (let blog of blogs) { %>
+          <div class="col-lg-4 col-md-6 col-sm-12 news-block">
+            <div class="news-block-one wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+              <div class="inner-box">
+                <div class="image-holder">
+                  <figure class="image-box">
+                    <img src="<%= blog?.images[0]?.url %>" alt="<%= blog.title %>" />
+                  </figure>
+                  <div class="post-date">
+                    <i class="fas fa-calendar-alt"></i>
+                    <p>
+                      <%= blog.postingDate.toLocaleDateString()%>
+                    </p>
+                  </div>
+                  <div class="link">
+                    <a href="/blog-details/<%= blog._id %>"><i class="fas fa-arrow-right"></i></a>
+                  </div>
                 </div>
-                <div class="link">
-                  <a href="blogs"><i class="fas fa-arrow-right"></i></a>
+                <div class="lower-content">
+                  <ul class="post-info">
+                    <li><span>by</span>&nbsp;<a href="/blog-details/<%= blog._id %>">
+                        <%= blog.author %>
+                      </a></li>
+
+                  </ul>
+                  <h3><a href="/blog-details/<%= blog._id %>">
+                      <%= blog.title %>
+                    </a></h3>
+                  <% const words=blog.description.split(' ');
+                     const limitedWords = words.slice(0, 30); // Adjust the number to your preference
+                  %>
+                  <p><%= limitedWords.join(' ') %> <a href="/blog-details/<%= blog._id %>">Read more...</a></p>
                 </div>
-              </div>
-              <div class="lower-content">
-                <ul class="post-info">
-                  <li><span>by</span>&nbsp;<a href="blogs">Nicolas</a></li>
-                  <li><a href="blogs">3 Comments</a></li>
-                </ul>
-                <h3>
-                  <a href="blogs">Revolutionizing Deliveries with EV Tempos - The LIUM GO
-                    Advantage</a>
-                </h3>
-                <p>
-                  In the ever-evolving landscape of logistics, a silent
-                  revolution is underway that promises to reshape the way we
-                  receive our packages and goods
-                  <a href="blogs">Read more...</a>
-                </p>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 news-block">
-          <div class="news-block-one wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
-            <div class="inner-box">
-              <div class="image-holder">
-                <figure class="image-box">
-                  <img src="/images/news/hackathon.png" alt="hackathon-Image" />
-                </figure>
-                <div class="post-date">
-                  <i class="fas fa-calendar-alt"></i>
-                  <p>Dec 22</p>
-                </div>
-                <div class="link">
-                  <a href="blogs"><i class="fas fa-arrow-right"></i></a>
-                </div>
-              </div>
-              <div class="lower-content">
-                <ul class="post-info">
-                  <li><span>by</span>&nbsp;<a href="blogs">Hinter</a></li>
-                  <li><a href="blogs">5 Comments</a></li>
-                </ul>
-                <h3>
-                  <a href="blogs">The New Era of EV Trends, News, and LIUM GO Insights</a>
-                </h3>
-                <p>
-                  The world is at the cusp of a transformative era in
-                  transportation, one that is defined by electric vehicles
-                  (EVs) spearheading the charge towards sustainability and
-                  innovation <a href="blogs">Read more...</a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 news-block">
-          <div class="news-block-one wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
-            <div class="inner-box">
-              <div class="image-holder">
-                <figure class="image-box">
-                  <img src="/images/news/trade.png" alt="" />
-                </figure>
-                <div class="post-date">
-                  <i class="fas fa-calendar-alt"></i>
-                  <p>Dec 21</p>
-                </div>
-                <div class="link">
-                  <a href="blogs"><i class="fas fa-arrow-right"></i></a>
-                </div>
-              </div>
-              <div class="lower-content">
-                <ul class="post-info">
-                  <li><span>by</span>&nbsp;<a href="blogs">Tailor</a></li>
-                  <li><a href="blogs">4 Comments</a></li>
-                </ul>
-                <h3>
-                  <a href="blogs">The Mandatory and Beneficial EV Revolution, with LIUM GO
-                    Leading the Way</a>
-                </h3>
-                <p>
-                  The global landscape is undergoing a seismic shift, one that
-                  promises to redefine the way we travel, interact with the
-                  environment.
-                  <a href="blogs">Read more...</a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <% } %>
       </div>
+
     </div>
   </section>
   <!-- news-section end -->
@@ -1312,7 +1256,6 @@
   <script src="/js/owl.js"></script>
   <script src="/js/wow.js"></script>
   <script src="/js/validation.js"></script>
-  <script src="/js/jquery.fancybox.js"></script>
   <script src="/js/appear.js"></script>
   <script src="/js/scrollbar.js"></script>
   <script src="/js/tilt.jquery.js"></script>

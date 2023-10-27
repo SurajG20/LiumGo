@@ -3,8 +3,13 @@ const Jobs = require('../models/Jobs');
 const Blogs = require('../models/Blogs');
 const { cloudinary } = require('../cloudinary');
 
-module.exports.home = (req, res) => {
-  res.render('index');
+module.exports.home = async (req, res) => {
+  if (req.session.AdminUser) {
+    var currentUser = req.session.AdminUser;
+  }
+  const blogs = await Blogs.find();
+
+  res.render('index', { currentUser, blogs });
 };
 module.exports.about = (req, res) => {
   res.render('about');

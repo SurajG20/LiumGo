@@ -2543,6 +2543,7 @@
    background: #fff;
    overflow: hidden;
    border-radius: 10px;
+   height: 700px;
    box-shadow: 0 10px 30px 0px rgba(99, 119, 238, 0.2);
  }
 
