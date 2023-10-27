@@ -1,8 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const User = require('./models/User');
-const mongoose = require('mongoose');
 const UserRoutes = require('./routes/UserRoutes');
 const AdminRoutes = require('./routes/AdminRoutes');
 const ElectricFleetRoutes = require('./routes/ElectricFleet');
@@ -13,13 +11,9 @@ const path = require('path');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const methodOverride = require('method-override');
-const ExpressError = require('./utils/ExpressError');
-const dbUrl = 'mongodb://127.0.0.1:27017/liumgo'; //FOR DEVELOPMENT MODE
-// const dbUrl = process.env.DBURL; //FOR Production MODE
-
-mongoose.connect(dbUrl).then(() => {
-  console.log('Database Connected !!');
-});
+// const dbUrl = 'mongodb://127.0.0.1:27017/liumgo'; //FOR DEVELOPMENT MODE
+const dbUrl = process.env.DBURL; //FOR Production MODE
+const connectDb = require('./db/connect');
 
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
@@ -54,12 +48,17 @@ app.use('/electric-fleet', ElectricFleetRoutes);
 app.use('/jobs', JobsRoutes);
 app.use('/blogs', BlogsRoutes);
 
-// app.all("*", (req, res, next) => {
-//     next(new ExpressError("Page Not Found!", 404));
-// });
-
 const port = process.env.PORT || 8000;
 
-app.listen(port, () => {
-  console.log('SERVER STARTED On PORT 8000');
-});
+const start = async () => {
+  try {
+    await connectDb(dbUrl);
+    app.listen(port, () =>
+      console.log(`Server is listening on port ${port}...`)
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+start();

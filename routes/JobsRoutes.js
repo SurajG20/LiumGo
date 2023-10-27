@@ -15,7 +15,6 @@ const { storage } = require('../cloudinary/index');
 const upload = multer({ storage });
 
 router.route('/').get(jobs);
-// router.route('/job-details/:id').get(renderJobDetails);
 
 router
   .route('/add-jobs')

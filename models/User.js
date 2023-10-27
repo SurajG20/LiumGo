@@ -17,20 +17,20 @@ const UserSchema = new Schema({
 
 const UserModel = mongoose.model('User', UserSchema)
 
-const SeedUser = async () => {
-    await UserModel.deleteMany({})
-    const Admin = new UserModel({
-        username: "admin",
-        password: "admin"
-    })
-    await Admin.save()
-}
+// const SeedUser = async () => {
+//     await UserModel.deleteMany({})
+//     const Admin = new UserModel({
+//         username: "admin",
+//         password: "admin"
+//     })
+//     await Admin.save()
+// }
 // Admin.save()
 
 
 
 
-SeedUser()
+// SeedUser()
 
 module.exports = UserModel
 
