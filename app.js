@@ -49,6 +49,10 @@ app.use('/electric-fleet', ElectricFleetRoutes);
 app.use('/jobs', JobsRoutes);
 app.use('/blogs', BlogsRoutes);
 
+app.use('*', (req, res) => {
+  res.render('error');
+});
+
 const port = process.env.PORT || 8000;
 
 const start = async () => {
