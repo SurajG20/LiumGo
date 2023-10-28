@@ -6,6 +6,8 @@ const AdminRoutes = require('./routes/AdminRoutes');
 const ElectricFleetRoutes = require('./routes/ElectricFleet');
 const JobsRoutes = require('./routes/JobsRoutes');
 const BlogsRoutes = require('./routes/BlogsRoutes');
+const AboutRoutes = require('./routes/AboutRoutes');
+const DetailRoutes = require('./routes/DetailRoutes')
 const ejsMate = require('ejs-mate');
 const path = require('path');
 const session = require('express-session');
@@ -16,6 +18,7 @@ const dbUrl = process.env.DBURL; //FOR Production MODE
 const connectDb = require('./db/connect');
 
 app.engine('ejs', ejsMate);
+
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
@@ -48,6 +51,8 @@ app.use('/admin/', AdminRoutes);
 app.use('/electric-fleet', ElectricFleetRoutes);
 app.use('/jobs', JobsRoutes);
 app.use('/blogs', BlogsRoutes);
+app.use('/about', AboutRoutes);
+app.use('/contact', DetailRoutes);
 
 app.use('*', (req, res) => {
   res.render('error');

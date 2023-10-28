@@ -16,6 +16,7 @@ const {
 router.route('/').get(home);
 
 router.route('/about').get(about);
+
 router.route('/about-details').get(aboutDetails);
 
 router.route('/services').get(service);

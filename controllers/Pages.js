@@ -1,63 +1,76 @@
 const Vehicles = require('../models/Vehicles');
 const Jobs = require('../models/Jobs');
 const Blogs = require('../models/Blogs');
+const Profiles = require('../models/Profiles');
+const Details = require('../models/Details');
 const { cloudinary } = require('../cloudinary');
 
 module.exports.home = async (req, res) => {
   if (req.session.AdminUser) {
     var currentUser = req.session.AdminUser;
   }
+  const details = await Details.findOne().sort({ createdAt: -1 });
+  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
   const blogs = await Blogs.find();
 
-  res.render('index', { currentUser, blogs });
+  res.render('index', {
+    currentUser,
+    blogs,
+    email: details.email,
+    phoneNumbers,
+  });
 };
-module.exports.about = (req, res) => {
-  res.render('about');
+
+module.exports.aboutDetails = async (req, res) => {
+  const details = await Details.findOne().sort({ createdAt: -1 });
+  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
+  res.render('about-details', { email: details.email, phoneNumbers });
 };
-module.exports.aboutDetails = (req, res) => {
-  res.render('about-details');
-};
-module.exports.service = (req, res) => {
-  res.render('service');
+module.exports.service =async (req, res) => {
+   const details = await Details.findOne().sort({ createdAt: -1 });
+  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
+  res.render('service',{email: details.email, phoneNumbers });
 };
 module.exports.electricFleet = async (req, res) => {
+   const details = await Details.findOne().sort({ createdAt: -1 });
+   const phoneNumbers = details.phone.split(',').map((number) => number.trim());
   const vehicles = await Vehicles.find();
   // console.log(vehicles[0])
   if (req.session.AdminUser) {
     var currentUser = req.session.AdminUser;
   }
-  res.render('electric-fleet', { currentUser, vehicles });
+  res.render('electric-fleet', { currentUser, vehicles,email: details.email, phoneNumbers });
 };
 
 module.exports.jobs = async (req, res) => {
+   const details = await Details.findOne().sort({ createdAt: -1 });
+   const phoneNumbers = details.phone.split(',').map((number) => number.trim());
   const jobs = await Jobs.find();
   if (req.session.AdminUser) {
     var currentUser = req.session.AdminUser;
   }
-  res.render('jobs', { currentUser, jobs });
+  res.render('jobs', { currentUser, jobs, email: details.email, phoneNumbers });
 };
 module.exports.blog = async (req, res) => {
   const blogs = await Blogs.find();
+  const details = await Details.findOne().sort({ createdAt: -1 });
+  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
   if (req.session.AdminUser) {
     var currentUser = req.session.AdminUser;
   }
   const searchQuery = req.query['search-field'];
 
   if (!searchQuery) {
-    return res.render('blog-standard', { currentUser, blogs });
+    return res.render('blog-standard', { currentUser, blogs,email: details.email, phoneNumbers });
   }
   const filteredBlogs = blogs.filter((blog) =>
     blog.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  res.render('blog-standard', { currentUser, blogs: filteredBlogs });
+  res.render('blog-standard', { currentUser, blogs: filteredBlogs,email: details.email, phoneNumbers });
 };
 
-module.exports.contact = (req, res) => {
-  res.render('contact');
-};
-
-module.exports.addNewVehicle = (req, res) => {
+module.exports.addNewVehicle = async(req, res) => {
   res.render('newVehicle');
 };
 
@@ -113,20 +126,26 @@ module.exports.postEditVehicleForm = async (req, res) => {
 };
 
 module.exports.renderJobDetails = async (req, res) => {
+  const details = await Details.findOne().sort({ createdAt: -1 });
+  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
   const { id } = req.params;
   const singleJob = await Jobs.findById(id);
   console.log(singleJob);
-  res.render('job-details', { singleJob });
+  res.render('job-details', { singleJob, email: details.email, phoneNumbers });
 };
 
 module.exports.renderBlogDetails = async (req, res) => {
   const { id } = req.params;
+  const details = await Details.findOne().sort({ createdAt: -1 });
+  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
   const blogs = await Blogs.find();
   const singleBlog = await Blogs.findById(id);
-  res.render('blog-details', { singleBlog, blogs });
+  res.render('blog-details', { singleBlog, blogs, email: details.email, phoneNumbers });
 };
-module.exports.renderPrivacyPolicy = (req, res) => {
-  res.render('privacy-policy');
+module.exports.renderPrivacyPolicy = async(req, res) => {
+  const details = await Details.findOne().sort({ createdAt: -1 });
+  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
+  res.render('privacy-policy',{email: details.email, phoneNumbers });
 };
 
 module.exports.addNewJob = (req, res) => {
@@ -249,3 +268,95 @@ module.exports.postEditBlogForm = async (req, res) => {
   }
   res.redirect('/blogs');
 };
+
+module.exports.about = async (req, res) => {
+  const profiles = await Profiles.find();
+  const details = await Details.findOne().sort({ createdAt: -1 });
+  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
+  if (req.session.AdminUser) {
+    var currentUser = req.session.AdminUser;
+  }
+  res.render('about', { currentUser, profiles, email: details.email, phoneNumbers });
+};
+
+module.exports.addNewProfile = (req, res) => {
+  res.render('newProfile');
+};
+
+module.exports.postNewProfileForm = async (req, res) => {
+  const { name, designation } = req.body;
+  const images = req.files.map((f) => {
+    return {
+      url: f.path,
+      filename: f.filename,
+    };
+  });
+
+  const profile = new Profiles({
+    name,
+    designation,
+    images,
+  });
+  await profile.save();
+  res.redirect('/about');
+};
+module.exports.renderEditProfileForm = async (req, res) => {
+  const { id } = req.params;
+  const profile = await Profiles.findById(id);
+  res.render('editProfile', { profile });
+};
+
+module.exports.deleteProfile = async (req, res) => {
+  const { id } = req.params;
+  await Profiles.findByIdAndDelete(id);
+  res.redirect('/about');
+};
+
+module.exports.postEditProfileForm = async (req, res) => {
+  const { id } = req.params;
+  const profile = await Profiles.findByIdAndUpdate(id, req.body);
+  const imgs = req.files.map((f) => {
+    return {
+      url: f.path,
+      filename: f.filename,
+    };
+  });
+  profile.images = [...imgs];
+  profile.save();
+
+  if (req.body.deleteImages) {
+    for (let filename of req.body.deleteImages) {
+      await cloudinary.uploader.destroy(filename);
+    }
+    await profile.updateOne({
+      $pull: { images: { filename: { $in: req.body.deleteImages } } },
+    });
+  }
+  res.redirect('/about');
+};
+
+module.exports.contact = async (req, res) => {
+  if (req.session.AdminUser) {
+    var currentUser = req.session.AdminUser;
+  }
+  const details = await Details.findOne().sort({ createdAt: -1 });
+  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
+  res.render('contact', { currentUser, email: details.email, phoneNumbers });
+};
+
+module.exports.addNewDetail = (req, res) => {
+  res.render('newDetail');
+};
+
+module.exports.postNewDetailForm = async (req, res) => {
+  const { phone, email } = req.body;
+  console.log(req.body);
+  const detail = new Details({
+    phone,
+    email,
+  });
+  await detail.save();
+  res.redirect('/contact');
+};
+
+

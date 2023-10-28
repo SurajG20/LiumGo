@@ -842,11 +842,12 @@
                         110092.
                       </li>
                       <li>
-                        <a href="tel:+9196081 94579">+91 9608194579</a> ,
-                        <a href="tel:+917549244783">+91 7549244783</a>
+                        <% phoneNumbers.forEach(number => { %>
+                        <a href="tel:<%= number %>">+91<%= number %></a> , <%
+                        }); %>
                       </li>
                       <li>
-                        <a href="mailto:sakshi@liumgo.com">sakshi@liumgo.com</a>
+                        <a href="mailto:<%= email %>"><%= email %></a>
                       </li>
                     </ul>
                   </div>

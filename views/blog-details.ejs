@@ -487,18 +487,19 @@
                   <div class="widget-title">
                     <h3>Contact Info</h3>
                   </div>
-                  <div class="widget-content">
+                   <div class="widget-content">
                     <ul>
                       <li>
                         3/27, Mandawali A2 Saket Block, Street No 3, Delhi
                         110092.
                       </li>
                       <li>
-                        <a href="tel:+9196081 94579">+91 9608194579</a> ,
-                        <a href="tel:+917549244783">+91 7549244783</a>
+                        <% phoneNumbers.forEach(number => { %>
+                        <a href="tel:<%= number %>">+91<%= number %></a> , <%
+                        }); %>
                       </li>
                       <li>
-                        <a href="mailto:sakshi@liumgo.com">sakshi@liumgo.com</a>
+                        <a href="mailto:<%= email %>"><%= email %></a>
                       </li>
                     </ul>
                   </div>
