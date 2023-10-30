@@ -13,7 +13,8 @@ const path = require("path");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const methodOverride = require("method-override");
-// const dbUrl = "mongodb://127.0.0.1:27017/liumgo"; //FOR DEVELOPMENT MODE
+// const dbUrl =
+  // "mongodb+srv://surajgoswami3000:gMZEHb25CXHzINxj@liumgo.t7exneu.mongodb.net/?retryWrites=true&w=majority"; //FOR DEVELOPMENT MODE
 const dbUrl = process.env.DBURL;//FOR Production MODE
 const connectDb = require("./db/connect");
 
