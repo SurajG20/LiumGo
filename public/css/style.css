@@ -431,7 +431,7 @@
  }
 
  .sec-pad {
-   padding: 160px 0px !important;
+   padding: 100px 0px !important;
  }
 
  .sec-pad-2 {
@@ -1014,6 +1014,7 @@
  }
 
  .mobile-menu {
+
    position: fixed;
    right: 0;
    top: 0;
@@ -1147,7 +1148,7 @@
 
  .mobile-menu .navigation li {
    position: relative;
-   display: block;
+   display: block !important;
    border-top: 1px solid rgba(255, 255, 255, 0.10);
  }
 
@@ -1906,7 +1907,7 @@
 
    position: relative;
    background: #fff;
-   padding: 150px 0px 55px 0px;
+   padding: 0px;
  }
 
  .service-block .service-block-one {

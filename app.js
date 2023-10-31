@@ -62,7 +62,6 @@ app.use("*", (req, res) => {
 
 const port = process.env.PORT || 8000;
 
-
 const start = async () => {
   try {
     await connectDb(dbUrl);
