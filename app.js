@@ -49,7 +49,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/", UserRoutes);
-app.use("/admin/", AdminRoutes);
+app.use("/admin", AdminRoutes);
 app.use("/electric-fleet", ElectricFleetRoutes);
 app.use("/jobs", JobsRoutes);
 app.use("/blogs", BlogsRoutes);

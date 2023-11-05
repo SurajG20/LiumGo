@@ -21,14 +21,11 @@ module.exports.postLoginForm = async (req, res) => {
     const adminUser = await User.findOne({ username });
     if (adminUser) {
       if (adminUser.password === password) {
-        // console.log(adminUser)
         req.session.AdminUser = adminUser;
         return res.redirect('/');
       }
     }
-    // else {
     res.redirect('/admin');
-    // }
   } catch (e) {
     throw e;
   }

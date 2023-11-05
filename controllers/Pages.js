@@ -10,67 +10,100 @@ module.exports.home = async (req, res) => {
     var currentUser = req.session.AdminUser;
   }
   const details = await Details.findOne().sort({ createdAt: -1 });
-  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
+  console.log(details);
+  const phoneNumbers = details?.phone
+    ?.split(',')
+    .map((number) => number.trim());
   const blogs = await Blogs.find();
 
   res.render('index', {
     currentUser,
     blogs,
-    email: details.email,
+    email: details?.email,
     phoneNumbers,
   });
 };
 
 module.exports.aboutDetails = async (req, res) => {
   const details = await Details.findOne().sort({ createdAt: -1 });
-  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
-  res.render('about-details', { email: details.email, phoneNumbers });
+  const phoneNumbers = details?.phone
+    ?.split(',')
+    .map((number) => number.trim());
+  res.render('about-details', { email: details?.email, phoneNumbers });
 };
-module.exports.service =async (req, res) => {
-   const details = await Details.findOne().sort({ createdAt: -1 });
-  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
-  res.render('service',{email: details.email, phoneNumbers });
+module.exports.service = async (req, res) => {
+  const details = await Details.findOne().sort({ createdAt: -1 });
+  const phoneNumbers = details?.phone
+    ?.split(',')
+    .map((number) => number.trim());
+  res.render('service', { email: details?.email, phoneNumbers });
 };
 module.exports.electricFleet = async (req, res) => {
-   const details = await Details.findOne().sort({ createdAt: -1 });
-   const phoneNumbers = details.phone.split(',').map((number) => number.trim());
+  const details = await Details.findOne().sort({ createdAt: -1 });
+  const phoneNumbers = details?.phone
+    ?.split(',')
+    .map((number) => number.trim());
   const vehicles = await Vehicles.find();
   // console.log(vehicles[0])
   if (req.session.AdminUser) {
     var currentUser = req.session.AdminUser;
   }
-  res.render('electric-fleet', { currentUser, vehicles,email: details.email, phoneNumbers });
+  res.render('electric-fleet', {
+    currentUser,
+    vehicles,
+    email: details?.email,
+    phoneNumbers,
+  });
 };
 
 module.exports.jobs = async (req, res) => {
-   const details = await Details.findOne().sort({ createdAt: -1 });
-   const phoneNumbers = details.phone.split(',').map((number) => number.trim());
+  const details = await Details.findOne().sort({ createdAt: -1 });
+  const phoneNumbers = details?.phone
+    ?.split(',')
+    .map((number) => number.trim());
   const jobs = await Jobs.find();
   if (req.session.AdminUser) {
     var currentUser = req.session.AdminUser;
   }
-  res.render('jobs', { currentUser, jobs, email: details.email, phoneNumbers });
+  res.render('jobs', {
+    currentUser,
+    jobs,
+    email: details?.email,
+    phoneNumbers,
+  });
 };
 module.exports.blog = async (req, res) => {
   const blogs = await Blogs.find();
   const details = await Details.findOne().sort({ createdAt: -1 });
-  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
+  const phoneNumbers = details?.phone
+    ?.split(',')
+    .map((number) => number.trim());
   if (req.session.AdminUser) {
     var currentUser = req.session.AdminUser;
   }
   const searchQuery = req.query['search-field'];
 
   if (!searchQuery) {
-    return res.render('blog-standard', { currentUser, blogs,email: details.email, phoneNumbers });
+    return res.render('blog-standard', {
+      currentUser,
+      blogs,
+      email: details?.email,
+      phoneNumbers,
+    });
   }
   const filteredBlogs = blogs.filter((blog) =>
     blog.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  res.render('blog-standard', { currentUser, blogs: filteredBlogs,email: details.email, phoneNumbers });
+  res.render('blog-standard', {
+    currentUser,
+    blogs: filteredBlogs,
+    email: details?.email,
+    phoneNumbers,
+  });
 };
 
-module.exports.addNewVehicle = async(req, res) => {
+module.exports.addNewVehicle = async (req, res) => {
   res.render('newVehicle');
 };
 
@@ -127,25 +160,36 @@ module.exports.postEditVehicleForm = async (req, res) => {
 
 module.exports.renderJobDetails = async (req, res) => {
   const details = await Details.findOne().sort({ createdAt: -1 });
-  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
+  const phoneNumbers = details?.phone
+    ?.split(',')
+    .map((number) => number.trim());
   const { id } = req.params;
   const singleJob = await Jobs.findById(id);
   console.log(singleJob);
-  res.render('job-details', { singleJob, email: details.email, phoneNumbers });
+  res.render('job-details', { singleJob, email: details?.email, phoneNumbers });
 };
 
 module.exports.renderBlogDetails = async (req, res) => {
   const { id } = req.params;
   const details = await Details.findOne().sort({ createdAt: -1 });
-  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
+  const phoneNumbers = details?.phone
+    ?.split(',')
+    .map((number) => number.trim());
   const blogs = await Blogs.find();
   const singleBlog = await Blogs.findById(id);
-  res.render('blog-details', { singleBlog, blogs, email: details.email, phoneNumbers });
+  res.render('blog-details', {
+    singleBlog,
+    blogs,
+    email: details?.email,
+    phoneNumbers,
+  });
 };
-module.exports.renderPrivacyPolicy = async(req, res) => {
+module.exports.renderPrivacyPolicy = async (req, res) => {
   const details = await Details.findOne().sort({ createdAt: -1 });
-  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
-  res.render('privacy-policy',{email: details.email, phoneNumbers });
+  const phoneNumbers = details?.phone
+    ?.split(',')
+    .map((number) => number.trim());
+  res.render('privacy-policy', { email: details?.email, phoneNumbers });
 };
 
 module.exports.addNewJob = (req, res) => {
@@ -272,11 +316,18 @@ module.exports.postEditBlogForm = async (req, res) => {
 module.exports.about = async (req, res) => {
   const profiles = await Profiles.find();
   const details = await Details.findOne().sort({ createdAt: -1 });
-  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
+  const phoneNumbers = details?.phone
+    ?.split(',')
+    .map((number) => number.trim());
   if (req.session.AdminUser) {
     var currentUser = req.session.AdminUser;
   }
-  res.render('about', { currentUser, profiles, email: details.email, phoneNumbers });
+  res.render('about', {
+    currentUser,
+    profiles,
+    email: details?.email,
+    phoneNumbers,
+  });
 };
 
 module.exports.addNewProfile = (req, res) => {
@@ -340,8 +391,10 @@ module.exports.contact = async (req, res) => {
     var currentUser = req.session.AdminUser;
   }
   const details = await Details.findOne().sort({ createdAt: -1 });
-  const phoneNumbers = details.phone.split(',').map((number) => number.trim());
-  res.render('contact', { currentUser, email: details.email, phoneNumbers });
+  const phoneNumbers = details?.phone
+    ?.split(',')
+    .map((number) => number.trim());
+  res.render('contact', { currentUser, email: details?.email, phoneNumbers });
 };
 
 module.exports.addNewDetail = (req, res) => {
@@ -358,5 +411,3 @@ module.exports.postNewDetailForm = async (req, res) => {
   await detail.save();
   res.redirect('/contact');
 };
-
-

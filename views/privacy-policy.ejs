@@ -739,7 +739,7 @@
                         110092.
                       </li>
                       <li>
-                        <% phoneNumbers.forEach(number => { %>
+                        <% phoneNumbers?.forEach(number => { %>
                         <a href="tel:<%= number %>">+91<%= number %></a> , <%
                         }); %>
                       </li>
