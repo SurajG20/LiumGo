@@ -565,5 +565,3 @@
     enableMasonry();
   });
 })(window.jQuery);
-
-
