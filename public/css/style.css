@@ -4330,7 +4330,20 @@
    padding-bottom: 160px;
  }
 
+ .feature-style-two .about.inner-box {
+   /* outline: 1px solid #4bc347; */
+   border: 5px solid transparent;
+   transition: all 0.2s ease-in-out;
+ }
+
+ .feature-style-two .about.inner-box:hover {
+   outline: 0px solid transparent;
+   border: 5px solid #4bc347;
+   transition: all 0.2s ease-in-out;
+ }
+
  .feature-style-two .inner-box {
+
    position: relative;
    display: block;
    background: #fff;
@@ -4375,6 +4388,62 @@
  .feature-style-two .inner-box .text p:last-child {
    margin-bottom: 0px;
  }
+
+
+ /** feature-style-two privacy **/
+
+ .privacy {
+   position: relative;
+   padding-bottom: 160px;
+ }
+
+ .privacy .inner-box {
+
+   position: relative;
+   display: block;
+   /* background: #fff; */
+   /* border-radius: 20px; */
+   min-height: 336px;
+   /* box-shadow: 0 20px 50px 3px rgba(99, 119, 238, 0.2); */
+   padding: 45px 30px 45px 40px;
+ }
+
+ .privacy .inner-box h3 {
+   font-size: 24px;
+   color: #09092b;
+   margin-bottom: 24px;
+ }
+
+ .privacy .inner-box p {
+   margin-bottom: 17px;
+ }
+
+ .privacy .inner-box .list-item li {
+   position: relative;
+   display: block;
+   padding-left: 45px;
+   margin-bottom: 15px;
+ }
+
+ .privacy .inner-box .list-item li:last-child {
+   margin-bottom: 0px;
+ }
+
+ .privacy .inner-box .list-item li:before {
+   position: absolute;
+   content: "\f105";
+   font-family: 'Flaticon';
+   font-size: 25px;
+   line-height: 30px;
+   font-weight: 500;
+   left: 0px;
+   top: 0px;
+ }
+
+ .privacy .inner-box .text p:last-child {
+   margin-bottom: 0px;
+ }
+
 
 
  /** team-section **/
@@ -5471,4 +5540,32 @@
  .error .back-home:hover {
    background: #222;
    color: #ddd;
+ }
+
+ .section-partners {
+   position: relative;
+   background: #fff;
+   padding: 50px 0px 150px 0px;
+ }
+
+ .square-holder {
+   padding: 30px;
+   border: 1px solid #cecece;
+   align-items: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 20px;
+   background-color: #f1f1f1;
+   min-height: 200px
+ }
+
+ .square-holder img {
+   max-width: 100%;
+   filter: grayscale(100%);
+   transition: all 0.3s;
+ }
+
+ .square-holder:hover img {
+   filter: none;
  }
