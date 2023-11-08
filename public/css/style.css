@@ -431,7 +431,11 @@
  }
 
  .sec-pad {
-   padding: 10px 0px !important;
+   padding: 100px 0px !important;
+ }
+
+ .sec-pad-2 {
+   padding: 50px 0px !important;
  }
 
  .scroll-top {

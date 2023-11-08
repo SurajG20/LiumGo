@@ -10,7 +10,6 @@ module.exports.home = async (req, res) => {
     var currentUser = req.session.AdminUser;
   }
   const details = await Details.findOne().sort({ createdAt: -1 });
-  console.log(details);
   const phoneNumbers = details?.phone
     ?.split(',')
     .map((number) => number.trim());
@@ -44,7 +43,6 @@ module.exports.electricFleet = async (req, res) => {
     ?.split(',')
     .map((number) => number.trim());
   const vehicles = await Vehicles.find();
-  // console.log(vehicles[0])
   if (req.session.AdminUser) {
     var currentUser = req.session.AdminUser;
   }
@@ -127,7 +125,6 @@ module.exports.renderEditVehicleForm = async (req, res) => {
 
 module.exports.deleteVehicle = async (req, res) => {
   const { id } = req.params;
-  // console.log(id)
   await Vehicles.findByIdAndDelete(id);
   res.redirect('/electric-fleet');
 };
@@ -136,7 +133,6 @@ module.exports.postEditVehicleForm = async (req, res) => {
   const { id } = req.params;
   // const { name, description, image } = req.body
   const vehicle = await Vehicles.findByIdAndUpdate(id, req.body);
-  console.log(req.files);
   const imgs = req.files.map((f) => {
     return {
       url: f.path,
@@ -165,7 +161,6 @@ module.exports.renderJobDetails = async (req, res) => {
     .map((number) => number.trim());
   const { id } = req.params;
   const singleJob = await Jobs.findById(id);
-  console.log(singleJob);
   res.render('job-details', { singleJob, email: details?.email, phoneNumbers });
 };
 
@@ -232,7 +227,6 @@ module.exports.renderEditJobForm = async (req, res) => {
 
 module.exports.deleteJob = async (req, res) => {
   const { id } = req.params;
-  // console.log(id)
   await Jobs.findByIdAndDelete(id);
   res.redirect('/jobs');
 };
@@ -403,7 +397,6 @@ module.exports.addNewDetail = (req, res) => {
 
 module.exports.postNewDetailForm = async (req, res) => {
   const { phone, email } = req.body;
-  console.log(req.body);
   const detail = new Details({
     phone,
     email,
