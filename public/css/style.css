@@ -431,11 +431,7 @@
  }
 
  .sec-pad {
-   padding: 100px 0px !important;
- }
-
- .sec-pad-2 {
-   padding: 100px 0px !important;
+   padding: 10px 0px !important;
  }
 
  .scroll-top {
@@ -1344,37 +1340,37 @@
 
 
  /** banner-section **/
-.banner-section {
-  position: relative;
-  background: #fff;
-  width: 100vw;
-  height: 100vh;
-  /* padding: 210px 0px 100px 0px; */
-}
+ .banner-section {
+   position: relative;
+   background: #fff;
+   width: 100vw;
+   height: 100vh;
+   /* padding: 210px 0px 100px 0px; */
+ }
 
-@media (max-width: 768px) {
-  .banner-section {
-    position: relative;
-    background: #fff;
-    width: 100vw;
-    height: 50vh;
-    /* padding: 210px 0px 100px 0px; */
-  }
+ @media (max-width: 768px) {
+   .banner-section {
+     position: relative;
+     background: #fff;
+     width: 100vw;
+     height: 50vh;
+     /* padding: 210px 0px 100px 0px; */
+   }
 
-}
+ }
 
-#background-video {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  /* margin-top: -80px; */
-  z-index: 1;
-}
+ #background-video {
+   height: 100%;
+   width: 100%;
+   object-fit: cover;
+   position: absolute;
+   left: 0;
+   right: 0;
+   top: 0;
+   bottom: 0;
+   /* margin-top: -80px; */
+   z-index: 1;
+ }
 
  .centered-logo {
    position: relative;
@@ -1901,8 +1897,6 @@
 
  /** service-section **/
 
-
-
  .service-section {
 
    position: relative;
@@ -2012,21 +2006,13 @@
    }
  }
 
- /* Add this CSS code to your stylesheet */
-
-
-
-
-
  /* Add green background to the last card */
  #explore-card .service-block-one {
    background-color: yellowgreen;
  }
 
-
  /* home page service section */
 
- /*  */
 
  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
@@ -2040,7 +2026,7 @@
  #services .service-block {
    display: grid;
    place-items: center;
-   height: 100vh;
+   height: 90vh;
  }
 
  #services .service-block .card {
@@ -3819,7 +3805,7 @@
 
  .testimonial-style-two {
    position: relative;
-   padding: 160px 0px;
+   padding: 70px 0px;
  }
 
  .testimonial-style-two .testimonial-content {
@@ -4376,6 +4362,63 @@
    margin-bottom: 0px;
  }
 
+ /** feature-style-two **/
+
+ .feature-style-two.about-details {
+   position: relative;
+   padding-bottom: 160px;
+ }
+
+ .feature-style-two.about-details .inner-box {
+
+   position: relative;
+   display: block;
+   background: #fff;
+   border-radius: 20px;
+   min-height: 336px;
+   box-shadow: 0 20px 50px 3px rgba(99, 119, 238, 0.2);
+   padding: 45px 30px 45px 40px;
+ }
+
+ .feature-style-two.about-details .inner-box:hover {
+   border: #34ce57 solid 1px;
+ }
+
+ .feature-style-two.about-details .inner-box h3 {
+   font-size: 24px;
+   color: #09092b;
+   margin-bottom: 24px;
+ }
+
+ .feature-style-two.about-details .inner-box p {
+   margin-bottom: 17px;
+ }
+
+ .feature-style-two.about-details .inner-box .list-item li {
+   position: relative;
+   display: block;
+   padding-left: 45px;
+   margin-bottom: 15px;
+ }
+
+ .feature-style-two.about-details .inner-box .list-item li:last-child {
+   margin-bottom: 0px;
+ }
+
+ .feature-style-two.about-details .inner-box .list-item li:before {
+   position: absolute;
+   content: "\f105";
+   font-family: 'Flaticon';
+   font-size: 25px;
+   line-height: 30px;
+   font-weight: 500;
+   left: 0px;
+   top: 0px;
+ }
+
+ .feature-style-two.about-details .inner-box .text p:last-child {
+   margin-bottom: 0px;
+ }
 
  /** team-section **/
 
@@ -4911,7 +4954,9 @@
  }
 
  .blog-details .blog-details-content .news-block-one .inner-box .lower-content {
+   height: 100%;
    padding: 60px 50px;
+   margin-bottom: 50px;
  }
 
  .blog-details .blog-details-content .news-block-one .inner-box .image-holder:before {
@@ -5019,7 +5064,7 @@
    margin-bottom: 30px;
  }
 
- .blog-details .blog-details-content .comments-form-area .comment-form .form-group {
+ /* .blog-details .blog-details-content .comments-form-area .comment-form .form-group {
    position: relative;
    margin-bottom: 30px;
  }
@@ -5124,7 +5169,7 @@
    position: relative;
    display: block;
    margin-bottom: 36px;
- }
+ } */
 
 
 
