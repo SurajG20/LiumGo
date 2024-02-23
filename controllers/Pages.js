@@ -1,6 +1,10 @@
 const Vehicles = require('../models/Vehicles');
 const Jobs = require('../models/Jobs');
 const Blogs = require('../models/Blogs');
+const Admin = require('../models/Admin');
+
+
+
 const { cloudinary } = require('../cloudinary');
 
 module.exports.home = async (req, res) => {
@@ -11,9 +15,7 @@ module.exports.home = async (req, res) => {
 
   res.render('index', { currentUser, blogs });
 };
-module.exports.about = (req, res) => {
-  res.render('about');
-};
+
 module.exports.aboutDetails = (req, res) => {
   res.render('about-details');
 };
@@ -28,6 +30,17 @@ module.exports.electricFleet = async (req, res) => {
   }
   res.render('electric-fleet', { currentUser, vehicles });
 };
+
+
+module.exports.about = async (req, res) => {
+  const Admins = await Admin.find();
+  if (req.session.AdminUser) {
+    var currentUser = req.session.AdminUser;
+  }
+  res.render("about", { currentUser , Admins });
+};
+
+
 
 module.exports.jobs = async (req, res) => {
   const jobs = await Jobs.find();
@@ -99,6 +112,7 @@ module.exports.postEditVehicleForm = async (req, res) => {
   });
   vehicle.images = [...imgs];
   // campground.save();
+  
   vehicle.save();
 
   if (req.body.deleteImages) {

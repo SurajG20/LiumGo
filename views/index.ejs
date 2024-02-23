@@ -229,15 +229,16 @@
             </div>
         </div> -->
     <!-- <div class="banner-container"> -->
-    <video autoplay loop muted nocontrols id="background-video">
-      <source src="/images/video/ape.mp4" type="video/mp4" />
+    <video preload="auto" autoplay loop muted nocontrols id="background-video" playsinline>
+      <source data-src="/images/video/ape.mp4" type="video/mp4" />
     </video>
-    <div class="d-flex flex-column justify-content-center align-items-center centred-logo-container"
-      style="height: 100%; width: 100%">
+
+    <!-- <div class="d-flex flex-column justify-content-center align-items-center centred-logo-container"
+      style="height: 100%; width: 100%"> -->
       <!-- <img src="/images/IElum/green-png.png" class="centered-logo" alt="centered-logo" /> -->
 
       <!-- <p class="text-dark font-weight-bold">Electrifying Logistics, Sustainable Future</p> -->
-    </div>
+    <!-- </div> -->
     <!-- <div class="btn-box" style="z-index: 10;"><a href="/">Join Driver Community</a></div> -->
     <!-- </div> -->
   </section>
@@ -1285,6 +1286,8 @@
 
   <!-- main-js -->
   <script src="/js/script.js"></script>
+  <!-- for video loading -->
+  <script src="/js/video.js"></script>
   <script>
     const removeModal = () => {
       const modal = document.querySelector(".my-modal");
